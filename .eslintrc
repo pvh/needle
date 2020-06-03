@@ -56,8 +56,9 @@
     // we agreed this is gratuitous
     "react/jsx-one-expression-per-line": "off",
 
-    // pushpin is inherently visual, so we've disabled quite a few accessibility rules
-    // it would be reasonable to re-enable these but would take some work
+    // pushpin was inherently visual, so we've disabled quite a few accessibility rules
+    // it would be reasonable to re-enable these but would take some work, and might be
+    // a good idea for an app like arthropod
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/interactive-supports-focus": "off",

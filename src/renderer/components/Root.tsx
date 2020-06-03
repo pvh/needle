@@ -12,8 +12,6 @@ import './content-types/workspace/Workspace'
 // default context components
 import './content-types/defaults/DefaultInList'
 
-// board in various contexts
-import './content-types/board'
 import './content-types/contact'
 import './content-types/files'
 import './content-types/storage-peer'

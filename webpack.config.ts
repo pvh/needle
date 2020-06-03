@@ -1,14 +1,10 @@
 import * as path from 'path'
-import os from 'os'
 import webpack from 'webpack'
 import { Configuration as DevServerConfig } from 'webpack-dev-server'
 import HtmlPlugin from 'html-webpack-plugin'
 import nodeExternals from 'webpack-node-externals'
 import HardSourcePlugin from 'hard-source-webpack-plugin'
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin'
-import CopyPlugin from 'copy-webpack-plugin'
-import OnBuildPlugin from 'on-build-webpack'
-import fs from 'fs'
 
 interface Options {
   isDev: boolean
@@ -124,12 +120,6 @@ function config(cb: (opts: Options) => webpack.Configuration) {
 
 const cacheDirectory = path.resolve(__dirname, '.cache/hard-source/[confighash]')
 
-// Get node path for clipper host.
-function getNodePath(isDev: boolean) {
-  if (isDev) return process.execPath
-  return os.platform() === 'win32' ? './PushPin.exe' : './PushPin'
-}
-
 export default [
   config(({ isDev }) => ({
     name: 'main',
@@ -138,75 +128,6 @@ export default [
     plugins: [
       new ForkTsCheckerPlugin({
         formatter: 'codeframe',
-      }),
-      ...(isDev
-        ? [
-            new HardSourcePlugin({
-              cacheDirectory,
-              info: {
-                level: 'warn',
-                mode: 'none',
-              },
-            }),
-          ]
-        : []),
-    ],
-  })),
-
-  config(({ isDev }) => ({
-    name: 'freeze-dry-preload',
-    entry: { 'freeze-dry-preload': './src/freeze-dry-preload' },
-    target: 'electron-renderer',
-    devtool: false,
-    plugins: [
-      new ForkTsCheckerPlugin({
-        formatter: 'codeframe',
-      }),
-      ...(isDev
-        ? [
-            new HardSourcePlugin({
-              cacheDirectory,
-              info: {
-                level: 'warn',
-                mode: 'none',
-              },
-            }),
-          ]
-        : []),
-    ],
-  })),
-
-  config(({ isDev }) => ({
-    name: 'clipper-host',
-    entry: { 'clipper-host': './src/apps/clipper-host' },
-    target: 'node',
-    devtool: false,
-    output: {
-      path: path.resolve(__dirname, 'dist/clipper-host'),
-      filename: `[name].js`,
-      globalObject: 'this',
-    },
-    externals: [],
-    plugins: [
-      new ForkTsCheckerPlugin({
-        formatter: 'codeframe',
-      }),
-      new CopyPlugin([
-        {
-          from: 'src/apps/clipper-host/*.+(sh|bat)',
-          flatten: true,
-          transform: (content: Buffer, filePath: string) => {
-            const nodePath = getNodePath(isDev)
-            const interpolated = content.toString().replace('__NODE_PATH__', nodePath)
-            return Buffer.from(interpolated)
-          },
-        },
-      ]),
-      new OnBuildPlugin(() => {
-        // set permissions on the clipper-host scripts
-        const clipperHostDir = path.resolve(__dirname, 'dist/clipper-host')
-        fs.chmodSync(path.join(clipperHostDir, 'clipper-host.js'), 0o755)
-        fs.chmodSync(path.join(clipperHostDir, 'clipper-host.sh'), 0o755)
       }),
       ...(isDev
         ? [
@@ -233,9 +154,9 @@ export default [
       new ForkTsCheckerPlugin({
         formatter: 'codeframe',
       }),
-      new HtmlPlugin({ title: 'PushPin', chunks: ['renderer'] }),
+      new HtmlPlugin({ title: 'Arthropod', chunks: ['renderer'] }),
       new HtmlPlugin({
-        title: 'PushPin: Background',
+        title: 'Arthropod: Background',
         chunks: ['background'],
         filename: 'background.html',
       }),
