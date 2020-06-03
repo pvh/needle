@@ -1,6 +1,8 @@
-# PushPin
+# Arthropod
 
-[A local-first collaborative corkboard app.](https://automerge.github.io/pushpin) Designed to collect all the information you need and synchronize it across all your computers. PushPin supports taking notes, and can archive web content, images, PDFs, audio, video, and any other files you might want to hang out. It can synchronize across all your devices, and doesn't require any infrastructure to operate.
+[A local-first issue tracker.](https://automerge.github.io/arthropod) Arthropod is a demonstration for the Cambria research project, designed to explore evolving data schemas in distributed systems.
+
+Arthropod supports taking notes, and can archive web content, images, PDFs, audio, video, and any other files you might want to hang out. It can synchronize across all your devices, and doesn't require any infrastructure to operate.
 
 [Join our Slack to ask questions, share ideas, or meet other users!](https://communityinviter.com/apps/automerge/automerge)
 
@@ -10,9 +12,9 @@ A project initiated by [Ink & Switch](https://inkandswitch.com/).
 
 ## WARNING
 
-PushPin is experimental software and currently implements an extremely open and permissive sharing system!
+Arthropod is experimental software and currently implements an extremely open and permissive sharing system!
 
-You should be extremely cautious about putting private personal data into PushPin. While the development team has no access to data in PushPin, once shared PushPin links cannot be unshared or redacted!
+You should be extremely cautious about putting private personal data into Arthropod. While the development team has no access to data in Arthropod, once shared Arthropod links cannot be unshared or redacted!
 
 See [WARNINGS](WARNINGS.md) for more details, and feel free to ask questions in Slack or GitHub issues.
 
@@ -28,8 +30,8 @@ To enable debug logging, e.g.:
 
 ```console
 $ DEBUG=* yarn start
-$ DEBUG=pushpin:* yarn start
-$ DEBUG=pushpin:card,hypermerge:* yarn start
+$ DEBUG=arthropod:* yarn start
+$ DEBUG=arthropod:card,hypermerge:* yarn start
 ```
 
 To run multiple clients and test syncing:
@@ -50,11 +52,11 @@ console:
 
 ```javascript
 > require('./constants').USER_PATH
-"/Users/mmcgrana/Library/Application Support/PushPin/pushpin-v11/mark"
+"/Users/mmcgrana/Library/Application Support/Arthropod/pushpin-v11/mark"
 ```
 
-On Mac, this is currently: `~/Library/Application Support/pushpin/`.
-On Windows, it is: `~\AppData\Roaming\PushPin`
+On Mac, this is currently: `~/Library/Application Support/arthropod/`.
+On Windows, it is: `~\AppData\Roaming\Arthropod`
 
 Per-NAME data is stored under that directory inside `pushpin-v11`. (The number may be higher if you're reading this in the future and we forgot to update the readme.) You can remove a single directory from to reset a user's data, or remove the entire data directory to reset all user data.
 
@@ -70,19 +72,13 @@ They'll have to paste that link into their search bar and with that, you'll be c
 
 You can navigate new places quickly by pressing "/" and then typing part of the name of the board you want to go to or the person you want to share your current view with.
 
-## Clipper Chrome Extension
-
-PushPin integrates with the [Clipper chrome extension](https://chrome.google.com/webstore/detail/pushpin-clipper/kdnhjinccidgfopcfckekiihpjakjhng) [(repo)](https://github.com/pvh/pushpin-clipper) to save content from webpages into Pushpin. To set up Clipper, follow the steps in the Clipper README to install the extension.
-
-You should now be able to clip content using the Clipper extension and have it show up in your Omnibox!
-
 ## Keeping Your Data Available
 
 [pushpin-peer](https://github.com/mjtognetti/pushpin-peer) is a simple data peer you can use to ensure your pushpin data is available. You can run pushpin peer on a server or in the cloud.
 
-## Hacking on PushPin
+## Hacking on Arthropod
 
-PushPin is built to be easily extended. You could add new kinds of cards like movies or music, a fancier text editor, a PDF viewer, a deck of cards, or a drum machine. You could replace our card layout with your own code, or build a 3d game using WebGL. The sky's the limit.
+Arthropod is built to be easily extended. You could add new kinds of cards like movies or music, a fancier text editor, a PDF viewer, a deck of cards, or a drum machine. You could replace our card layout with your own code, or build a 3d game using WebGL. The sky's the limit.
 
 See [HACKING](HACKING.md) for a getting started guide.
 
@@ -104,6 +100,7 @@ This project was written by
 - Jeff Peterson
 - Matt Tognetti
 - Peter van Hardenberg
+- Geoffrey Litt
   and was produced under the auspices of [Ink & Switch](inkandswitch.com).
 
 Special thanks to Martin Kleppmann (automerge) and Mathias Buus (hypercore) for their advice and contributions.
