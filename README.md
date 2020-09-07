@@ -1,8 +1,10 @@
-# Arthropod
+# Needle
 
-[A local-first issue tracker.](https://automerge.github.io/arthropod) Arthropod is a demonstration for the Cambria research project, designed to explore evolving data schemas in distributed systems.
+A starting-poiint for building your own local-first application.
 
-Arthropod supports taking notes, and can archive web content, images, PDFs, audio, video, and any other files you might want to hang out. It can synchronize across all your devices, and doesn't require any infrastructure to operate.
+Needle is the PushPin codebase, stripped down to boot into a simple Text component at initial startup.
+
+To make your own application, start by adding a new component in `./src/renderer/components/content-types/` and then modify Workspace to create one at startup. (Yes, this is vague and unhelpful, sorry.)
 
 [Join our Slack to ask questions, share ideas, or meet other users!](https://communityinviter.com/apps/automerge/automerge)
 
@@ -12,7 +14,7 @@ A project initiated by [Ink & Switch](https://inkandswitch.com/).
 
 ## WARNING
 
-Arthropod is experimental software and currently implements an extremely open and permissive sharing system!
+Needle is experimental software and currently implements an extremely open and permissive sharing system!
 
 You should be extremely cautious about putting private personal data into Arthropod. While the development team has no access to data in Arthropod, once shared Arthropod links cannot be unshared or redacted!
 
